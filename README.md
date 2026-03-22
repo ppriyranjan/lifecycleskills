@@ -13,15 +13,15 @@ This plugin provides two powerful skills that help marketing teams:
 ### From GitHub (recommended for public distribution)
 
 ```bash
-claude plugin install github:ppriyranjan/lifecycle-marketing-skills
+claude plugin install github:ppriyranjan/lifecycleskills
 ```
 
 ### Local Development
 
 ```bash
 # Clone this repository
-git clone https://github.com/ppriyranjan/lifecycle-marketing-skills.git
-cd lifecycle-marketing-skills
+git clone https://github.com/ppriyranjan/lifecycleskills.git
+cd lifecycleskills
 
 # Use with --plugin-dir flag
 claude --plugin-dir .
