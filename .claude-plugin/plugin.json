@@ -14,5 +14,6 @@
     "lifecycle-marketing",
     "analytics",
     "campaigns"
-  ]
+  ],
+  "skills": "./skills/"
 }
