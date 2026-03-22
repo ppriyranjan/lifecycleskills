@@ -1,0 +1,26 @@
+# Node modules (if any scripts add dependencies)
+node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+
+# Old directories (before plugin reorganization)
+# Uncomment these after cleaning up:
+# jira-lifecycle-ideas/
+# reporting-customerio/
+# .claude/
+# test_customerio_mcp.js
+# Claude.md

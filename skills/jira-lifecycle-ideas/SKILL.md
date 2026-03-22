@@ -1,8 +1,8 @@
 ---
 name: jira-lifecycle-ideas
 description: Discovers recently launched product features from Jira and generates targeted lifecycle marketing campaign ideas. Use when planning marketing campaigns, identifying new launches, or finding features that need marketing support.
-disable-model-invocation: true
-allowed-tools: mcp__*
+disable-model-invocation: false
+allowed-tools: mcp__atlassian__*, Read
 ---
 
 # Jira Lifecycle Marketing Ideas
@@ -30,9 +30,27 @@ Follow these steps in order. This skill is designed to be adaptive and work acro
 
 ### Step 1: Verify Jira MCP Connection
 
-Check if the Atlassian Jira MCP is available and connected.
+Check if the Atlassian remote MCP is available by attempting to call any `mcp__atlassian__*` tool (e.g., list projects or search issues). The server must be added as `atlassian` using the official remote MCP endpoint.
 
-**If MCP is not available:** Direct the user to see [JIRA_SETUP.md](JIRA_SETUP.md) for setup instructions.
+**If MCP tools are unavailable or return an auth error:** Offer to help set it up:
+
+1. **Offer to add the server automatically:** Present the user with a helpful message offering to run the setup for them:
+
+   "The Atlassian MCP server is not connected yet. I can help you set it up! Would you like me to add the server for you?"
+
+2. **If user agrees, run the setup command:**
+   ```
+   claude mcp add --transport http atlassian https://mcp.atlassian.com/v1/mcp
+   ```
+
+3. **Provide next steps after adding:**
+   - "Great! The Atlassian MCP server has been added."
+   - "Next, you'll need to authenticate via OAuth:"
+     - "1. Run `/mcp` in Claude Code"
+     - "2. Select the `atlassian` server and complete the browser OAuth flow"
+   - "Once authenticated, come back and run this skill again!"
+
+4. **Also mention the manual option:** "Or, if you prefer to set this up manually with detailed instructions, see [JIRA_SETUP.md](JIRA_SETUP.md)."
 
 **If MCP is available:** Proceed to Step 2.
 

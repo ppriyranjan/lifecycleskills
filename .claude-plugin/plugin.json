@@ -1,0 +1,18 @@
+{
+  "name": "lifecycle-marketing-skills",
+  "description": "Claude Code skills for lifecycle marketing teams using Customer.io and Jira",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lifecycle Marketing Team"
+  },
+  "repository": "https://github.com/ppriyranjan/lifecycle-marketing-skills",
+  "homepage": "https://github.com/ppriyranjan/lifecycle-marketing-skills",
+  "license": "MIT",
+  "keywords": [
+    "customer.io",
+    "jira",
+    "lifecycle-marketing",
+    "analytics",
+    "campaigns"
+  ]
+}
