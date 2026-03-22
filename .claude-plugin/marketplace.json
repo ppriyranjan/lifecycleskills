@@ -13,10 +13,7 @@
       "author": {
         "name": "Lifecycle Marketing Team"
       },
-      "source": {
-        "source": "github",
-        "repo": "ppriyranjan/lifecycleskills"
-      }
+      "source": "."
     }
   ]
 }
