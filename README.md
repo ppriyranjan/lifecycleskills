@@ -1,184 +1,138 @@
 # Lifecycle Marketing Skills for Claude Code
 
-A collection of Claude Code skills designed for lifecycle marketing teams using Customer.io and Jira.
+Claude Code skills for lifecycle marketing teams. Each skill connects to your marketing tools via MCP and automates a common analysis or planning task.
 
-## Overview
+## Skills at a Glance
 
-This plugin provides two powerful skills that help marketing teams:
-- **Generate lifecycle marketing campaigns** from recently launched product features in Jira
-- **Analyze Customer.io email performance** with comprehensive deliverability and engagement metrics
+| Skill | What it does | Use when... |
+|-------|-------------|-------------|
+| [`/jira-lifecycle-ideas`](#jira-lifecycle-ideas) | Turns recent Jira launches into lifecycle campaign ideas | Planning campaigns around new features |
+| [`/cio-analytics`](#cio-analytics) | Analyzes Customer.io email performance | You use Customer.io and want a performance report |
+| [`/braze-analytics`](#braze-analytics) | Analyzes Braze campaign and Canvas performance | You use Braze and want a performance report |
+| [`/iterable-analytics`](#iterable-analytics) | Analyzes Iterable campaign performance | You use Iterable and want a performance report *(beta)* |
+
+---
+
+## Skills
+
+### jira-lifecycle-ideas
+
+**What it does**: Scans your Jira projects for features shipped in the last 2 weeks and generates specific lifecycle marketing campaign ideas for each one — including suggested channels, timing, and target segments.
+
+**Use this when:**
+- You're planning your weekly or biweekly campaign calendar
+- A product launch just happened and you need marketing ideas fast
+- You want to make sure no shipped features go without outreach
+
+**What you get:** A prioritized list of campaign ideas, each with a target segment, recommended channel (email, push, in-app), suggested timing, and success metrics.
+
+**Invoke it:**
+```
+/jira-lifecycle-ideas
+```
+
+**Needs:** Atlassian Jira MCP connected. See [skills/jira-lifecycle-ideas/SKILL.md](skills/jira-lifecycle-ideas/SKILL.md) for setup.
+
+---
+
+### cio-analytics
+
+**What it does**: Pulls deliverability and engagement data from your Customer.io workspace and generates a full performance report with period-over-period comparisons and AI-generated insights.
+
+**Use this when:**
+- You want a quick health check on email performance
+- You're preparing a weekly or monthly metrics report
+- You're investigating a deliverability or engagement drop
+- You want to know which campaigns are performing best or worst
+
+**What you get:** A report covering deliverability rates, human engagement (bot-filtered), top 10 campaigns by volume, trend indicators, and specific recommended actions.
+
+**Invoke it:**
+```
+/cio-analytics            # Last 7 days vs previous 7 days
+/cio-analytics 30d        # Last 30 days vs previous 30 days
+/cio-analytics March 1 to March 15   # Custom date range
+```
+
+**Needs:** Customer.io MCP connected. See [skills/cio-analytics/SKILL.md](skills/cio-analytics/SKILL.md) for setup.
+
+---
+
+### braze-analytics
+
+**What it does**: Pulls campaign and Canvas data from Braze and generates a performance report with period-over-period comparisons and AI-generated insights.
+
+**Use this when:**
+- You want a health check on Braze email performance
+- You want to see how Canvases (multi-step journeys) are performing
+- You're preparing a campaign performance report for stakeholders
+
+**What you get:** A report covering deliverability, unique opens/clicks, Canvas analytics, top campaigns by volume, and actionable recommendations.
+
+**Invoke it:**
+```
+/braze-analytics          # Last 7 days vs previous 7 days
+/braze-analytics 30d      # Last 30 days
+/braze-analytics Welcome Campaign   # Focus on a specific campaign
+```
+
+**Needs:** Braze MCP connected with a read-only API key. See [skills/braze-analytics/SKILL.md](skills/braze-analytics/SKILL.md) for setup.
+
+---
+
+### iterable-analytics
+
+**What it does**: Pulls campaign data from Iterable and generates a performance report with period-over-period comparisons and AI-generated insights.
+
+> **Beta**: Built against Iterable's MCP Server, which is currently in beta. Looking for testers — reach out to priy@sortment.com if you'd like to help.
+
+**Use this when:**
+- You want a health check on Iterable campaign performance
+- You want to compare this week's metrics to last week
+
+**What you get:** A report covering deliverability, open/click/conversion rates, top campaigns, and AI-generated insights.
+
+**Invoke it:**
+```
+/iterable-analytics        # Last 7 days vs previous 7 days
+/iterable-analytics 30d    # Last 30 days
+```
+
+**Needs:** Iterable MCP Server configured. See [skills/iterable-analytics/SKILL.md](skills/iterable-analytics/SKILL.md) for setup.
+
+---
 
 ## Installation
 
-### From GitHub Marketplace (recommended for public distribution)
+### Claude CoWork
+
+1. Go to **Settings → Plugins** in your CoWork workspace
+2. Click **Browse Marketplace** and search for `lifecycle-marketing-skills`
+3. Click **Install** on the plugin card by `ppriyranjan`
+4. Configure MCP connections under **Settings → Integrations** for whichever tools you use
+5. Skills are immediately available — type the skill command in any conversation
+
+### From GitHub Marketplace
 
 ```bash
-# Step 1: Add the marketplace
 claude plugin marketplace add ppriyranjan/lifecycleskills
-
-# Step 2: Install the plugin
 claude plugin install lifecycle-marketing-skills@ppriyranjan-lifecycleskills
 ```
 
 ### Local Development
 
 ```bash
-# Clone this repository
 git clone https://github.com/ppriyranjan/lifecycleskills.git
 cd lifecycleskills
-
-# Use with --plugin-dir flag
 claude --plugin-dir .
 ```
 
-## Skills Included
-
-### 1. Jira Lifecycle Ideas (`/jira-lifecycle-ideas`)
-
-Discovers recently launched product features from Jira and generates targeted lifecycle marketing campaign ideas.
-
-**Use when:**
-- Planning weekly or biweekly marketing campaigns
-- Discovering new product launches that need marketing support
-- Identifying features that could benefit from targeted outreach
-- Creating data-driven lifecycle marketing strategies
-
-**What it does:**
-1. Connects to your Jira workspace via MCP
-2. Discovers product features launched in the last 2 weeks
-3. Assesses each feature's relevance for lifecycle marketing
-4. Generates specific, actionable campaign ideas with channels, timing, and target segments
-5. Prioritizes opportunities by marketing impact
-
-**Prerequisites:**
-- Atlassian Jira MCP server configured (see setup instructions below)
-
-**Usage:**
-```bash
-# In Claude Code
-/jira-lifecycle-ideas
-```
-
-**Output:** Comprehensive markdown report with campaign ideas, target segments, channels, timelines, and success metrics.
-
-**Learn more:** See [skills/jira-lifecycle-ideas/SKILL.md](skills/jira-lifecycle-ideas/SKILL.md)
-
 ---
 
-### 2. Customer.io Analytics (`/cio-analytics`)
+## Which skill should I use?
 
-Generates comprehensive Customer.io analytics reports with deliverability, engagement, and campaign performance metrics.
-
-**Use when:**
-- Analyzing email performance
-- Reviewing campaign results
-- Investigating deliverability issues
-- Understanding open/click rates and engagement trends
-- Comparing period-over-period performance
-
-**What it does:**
-1. Connects to your Customer.io workspace via MCP
-2. Fetches metrics for current and previous periods (7-day or 30-day)
-3. Calculates deliverability rates, engagement rates, bot activity percentages
-4. Analyzes top campaigns by volume
-5. Generates AI-powered insights and recommendations
-
-**Prerequisites:**
-- Customer.io MCP server configured (see setup instructions below)
-
-**Usage:**
-```bash
-# In Claude Code - analyzes last 7 days vs previous 7 days
-/cio-analytics
-
-# Analyze last 30 days
-/cio-analytics 30d
-
-# Custom date range
-/cio-analytics March 1 to March 15
-```
-
-**Output:** Comprehensive analytics report with deliverability metrics, engagement metrics, campaign performance, AI insights, and actionable recommendations.
-
-**Learn more:** See [skills/cio-analytics/SKILL.md](skills/cio-analytics/SKILL.md)
-
----
-
-## Setup Instructions
-
-### Setting up Atlassian Jira MCP (for jira-lifecycle-ideas)
-
-```bash
-# Add the official Atlassian MCP server
-claude mcp add --transport http atlassian https://mcp.atlassian.com/v1/mcp
-
-# Complete OAuth authentication
-/mcp
-```
-
-For detailed setup instructions, see [skills/jira-lifecycle-ideas/JIRA_SETUP.md](skills/jira-lifecycle-ideas/JIRA_SETUP.md)
-
-### Setting up Customer.io MCP (for cio-analytics)
-
-The Customer.io MCP server should already be available if you're using Claude Code with Customer.io integration. If not configured:
-
-1. Verify the MCP server is installed: `/mcp list`
-2. Follow Customer.io's MCP setup documentation
-3. Ensure you have workspace access permissions
-
-For detailed setup instructions, see [skills/cio-analytics/templates/setup-instructions.md](skills/cio-analytics/templates/setup-instructions.md)
-
----
-
-## Directory Structure
-
-```
-lifecycle-marketing-skills/
-├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest
-├── skills/
-│   ├── jira-lifecycle-ideas/
-│   │   ├── SKILL.md             # Main skill definition
-│   │   ├── CAMPAIGN_TEMPLATES.md # Campaign templates
-│   │   ├── LIFECYCLE_FRAMEWORK.md # Marketing relevance framework
-│   │   └── JIRA_SETUP.md        # Setup instructions
-│   └── cio-analytics/
-│       ├── SKILL.md             # Main skill definition
-│       ├── README.md            # Skill documentation
-│       ├── lib/                 # Helper scripts
-│       └── templates/           # Report templates
-├── README.md                    # This file
-└── LICENSE                      # MIT License
-```
-
-## Contributing
-
-Contributions are welcome! If you'd like to add new skills or improve existing ones:
-
-1. Fork this repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## Support
-
-For issues or questions:
-- Open an issue on GitHub
-- Check individual skill documentation in `skills/*/SKILL.md`
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
----
-
-## Version History
-
-### 1.0.0 (Initial Release)
-- Added `jira-lifecycle-ideas` skill for generating marketing campaigns from Jira launches
-- Added `cio-analytics` skill for Customer.io performance reporting
-- Full MCP integration for both Atlassian Jira and Customer.io
-
----
-
-**Built for lifecycle marketing teams who want to automate campaign discovery and performance analysis using Claude Code.**
+- **I want campaign ideas from recent product work** → `/jira-lifecycle-ideas`
+- **I use Customer.io** → `/cio-analytics`
+- **I use Braze** → `/braze-analytics`
+- **I use Iterable** → `/iterable-analytics`
+- **I want all the analytics skills** → install them all; they only run when invoked or when you ask about that specific platform
