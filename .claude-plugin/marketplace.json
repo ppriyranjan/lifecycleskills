@@ -1,4 +1,5 @@
 {
+  "name": "lifecycleskills",
   "version": "1.0",
   "owner": {
     "name": "Priy Ranjan",
@@ -12,7 +13,7 @@
       "author": {
         "name": "Lifecycle Marketing Team"
       },
-      "source": "."
+      "source": "https://github.com/ppriyranjan/lifecycleskills.git"
     }
   ]
 }
