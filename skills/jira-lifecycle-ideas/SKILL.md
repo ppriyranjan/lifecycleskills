@@ -54,14 +54,45 @@ Check if the Atlassian remote MCP is available by attempting to call any `mcp__a
 
 **If MCP is available:** Proceed to Step 2.
 
-### Step 2: Discover Jira Configuration
+### Step 2: Check Available Projects and Select Target Projects
 
-Query recent issues to understand how this Jira workspace indicates "launched" features.
+Before analyzing issues, determine which Jira projects to scan.
+
+**Query for available projects:**
+Use `mcp__atlassian__getVisibleJiraProjects` to retrieve all projects the authenticated user can access.
+
+**If multiple projects exist (2 or more):**
+1. Present the list of projects to the user with their keys and names
+2. Use the `AskUserQuestion` tool to ask: "Which Jira project(s) should I analyze for launched features?"
+3. Provide project options in the format: `[PROJECT-KEY] - [Project Name]`
+4. Set `multiSelect: true` to allow selecting multiple projects
+5. Include a recommended option if you can identify the most active or relevant project
+
+**If only one project exists:**
+- Proceed with that single project automatically
+- Inform the user which project will be analyzed
+
+**Store the selected projects:**
+- Use the project keys in all subsequent JQL queries
+- Format: `project in (PROJ1, PROJ2, PROJ3) AND ...`
+- If user selects all projects, you may omit the project filter
+
+**Important:** All subsequent queries in Steps 3-5 must include the project filter based on user selection.
+
+### Step 3: Discover Jira Configuration
+
+Query recent issues from the selected projects to understand how this Jira workspace indicates "launched" features.
 
 **Query parameters:**
-- Timeframe: Last 14 days (`updated >= -14d`)
-- Limit: 50-100 recent issues for analysis
-- Sort: Most recently updated first
+- **Projects:** Use selected projects from Step 2 (`project in (KEY1, KEY2)`)
+- **Timeframe:** Last 14 days (`updated >= -14d`)
+- **Limit:** 50-100 recent issues for analysis
+- **Sort:** Most recently updated first
+
+**Example JQL:**
+```
+project in (PROJ, PROD) AND updated >= -14d ORDER BY updated DESC
+```
 
 **Analyze the results to identify:**
 - **Status patterns:** Look for statuses containing "done", "released", "launched", "deployed", "closed", "resolved"
@@ -72,9 +103,9 @@ Query recent issues to understand how this Jira workspace indicates "launched" f
 
 **Important:** Do not assume specific field names. Different workspaces use different conventions.
 
-### Step 3: Identify Launched Features
+### Step 4: Identify Launched Features
 
-Based on the patterns discovered in Step 2, filter for issues that appear to be launched features.
+Based on the patterns discovered in Step 3, filter for issues that appear to be launched features from the selected projects.
 
 **Heuristics to apply:**
 - Status recently changed to a "done" state (within last 14 days)
@@ -103,7 +134,7 @@ Based on the patterns discovered in Step 2, filter for issues that appear to be 
 - Labels and components
 - Any custom fields indicating target audience or impact
 
-### Step 4: Assess Marketing Relevance
+### Step 5: Assess Marketing Relevance
 
 For each identified feature, assess its relevance for lifecycle marketing using the framework in [LIFECYCLE_FRAMEWORK.md](LIFECYCLE_FRAMEWORK.md).
 
@@ -124,7 +155,7 @@ For each identified feature, assess its relevance for lifecycle marketing using 
 - Adoption needs (does it require onboarding/education?)
 - Business impact keywords (enterprise, pro, integration, automation, etc.)
 
-### Step 5: Generate Campaign Ideas
+### Step 6: Generate Campaign Ideas
 
 For each high-relevance feature, generate specific campaign ideas using templates from [CAMPAIGN_TEMPLATES.md](CAMPAIGN_TEMPLATES.md).
 
@@ -151,7 +182,7 @@ For each high-relevance feature, generate specific campaign ideas using template
 6. **Timeline:** When to launch and follow up
 7. **Success Metrics:** How to measure effectiveness
 
-### Step 6: Generate Output Report
+### Step 7: Generate Output Report
 
 Create a comprehensive markdown report with the following structure:
 

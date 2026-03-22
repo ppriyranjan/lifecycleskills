@@ -66,7 +66,7 @@ claude mcp add --transport stdio atlassian \
 
 ### Step 4: (Optional) Filter to Specific Projects
 
-When using the skill, you can scope queries to specific projects by adding a JQL project filter in the workflow (Step 2 of SKILL.md):
+The skill will automatically ask you to select projects when you run it (Step 2 of SKILL.md). However, you can also manually scope queries to specific projects by adding a JQL project filter:
 
 ```
 project in (PROJ, PROD, FEAT) AND updated >= -14d
