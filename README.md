@@ -10,10 +10,14 @@ This plugin provides two powerful skills that help marketing teams:
 
 ## Installation
 
-### From GitHub (recommended for public distribution)
+### From GitHub Marketplace (recommended for public distribution)
 
 ```bash
-claude plugin install github:ppriyranjan/lifecycleskills
+# Step 1: Add the marketplace
+claude plugin marketplace add ppriyranjan/lifecycleskills
+
+# Step 2: Install the plugin
+claude plugin install lifecycle-marketing-skills@ppriyranjan-lifecycleskills
 ```
 
 ### Local Development

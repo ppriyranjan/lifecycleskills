@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "owner": {
+    "name": "Priy Ranjan",
+    "contact": "https://github.com/ppriyranjan"
+  },
+  "plugins": [
+    {
+      "name": "lifecycle-marketing-skills",
+      "version": "1.0.0",
+      "description": "Claude Code skills for lifecycle marketing teams using Customer.io and Jira",
+      "author": {
+        "name": "Lifecycle Marketing Team"
+      },
+      "source": "."
+    }
+  ]
+}
