@@ -22,8 +22,9 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 1. Open the **Cowork** tab in Claude Desktop
 2. Click **Customize** in the left sidebar
 3. Click the **+** next to **Personal plugins**
-4. Enter the GitHub URL: `https://github.com/ppriyranjan/lifecycleskills`
-5. Connect the tools each skill needs:
+4. Click on Create Plugin and then on Add Marketplace
+5. Enter the GitHub repo/url: `ppriyranjan/lifecycleskills` and press Sync
+6. Connect the tools each skill needs:
    - Go to **Customize → Connectors**
    - Add the relevant connector (e.g. Atlassian for Jira, Customer.io, Braze) and authenticate
    - For Iterable, you will need to connect to their MCP server. [Docs](https://support.iterable.com/hc/en-us/articles/42936790497812-Setting-up-Iterable-s-MCP-Server)
