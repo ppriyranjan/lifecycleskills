@@ -28,14 +28,6 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
    - Add the relevant connector (e.g. Atlassian for Jira, Customer.io, Braze) and authenticate
 6. Skills are now available — type the slash command (e.g. `/cio-analytics`) in any conversation
 
-### Local Development
-
-```bash
-git clone https://github.com/ppriyranjan/lifecycleskills.git
-cd lifecycleskills
-claude --plugin-dir .
-```
-
 ---
 
 ## Skills
@@ -91,8 +83,6 @@ Pulls campaign and deliverability data from your ESP and generates a performance
 - [Customer.io setup](skills/cio-analytics/SKILL.md)
 - [Braze setup](skills/braze-analytics/SKILL.md)
 - [Iterable setup](skills/iterable-analytics/SKILL.md)
-
-> **Iterable note:** Built against Iterable's MCP Server, which is currently in beta. Looking for testers — reach out to priy@sortment.com if you'd like to help.
 
 ---
 
