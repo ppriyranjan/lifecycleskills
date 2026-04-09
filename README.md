@@ -7,9 +7,34 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | [`/jira-lifecycle-ideas`](#jira-lifecycle-ideas) | Turns recent Jira launches into lifecycle campaign ideas | Planning campaigns around new features |
-| [`/cio-analytics`](#cio-analytics) | Analyzes Customer.io email performance | You use Customer.io and want a performance report |
-| [`/braze-analytics`](#braze-analytics) | Analyzes Braze campaign and Canvas performance | You use Braze and want a performance report |
-| [`/iterable-analytics`](#iterable-analytics) | Analyzes Iterable campaign performance | You use Iterable and want a performance report *(beta)* |
+| [`/cio-analytics`](#esp-analytics) | Analyzes Customer.io email performance | You use Customer.io and want a performance report |
+| [`/braze-analytics`](#esp-analytics) | Analyzes Braze campaign and Canvas performance | You use Braze and want a performance report |
+| [`/iterable-analytics`](#esp-analytics) | Analyzes Iterable campaign performance | You use Iterable and want a performance report *(beta)* |
+
+---
+
+## Installation
+
+### Claude CoWork
+
+> Requires a paid plan (Pro, Max, Team, or Enterprise).
+
+1. Open the **Cowork** tab in Claude Desktop
+2. Click **Customize** in the left sidebar
+3. Click the **+** next to **Personal plugins**
+4. Enter the GitHub URL: `https://github.com/ppriyranjan/lifecycleskills`
+5. Connect the tools each skill needs:
+   - Go to **Customize → Connectors**
+   - Add the relevant connector (e.g. Atlassian for Jira, Customer.io, Braze) and authenticate
+6. Skills are now available — type the slash command (e.g. `/cio-analytics`) in any conversation
+
+### Local Development
+
+```bash
+git clone https://github.com/ppriyranjan/lifecycleskills.git
+cd lifecycleskills
+claude --plugin-dir .
+```
 
 ---
 
@@ -35,9 +60,15 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 
 ---
 
-### cio-analytics
+### ESP Analytics
 
-**What it does**: Pulls deliverability and engagement data from your Customer.io workspace and generates a full performance report with period-over-period comparisons and AI-generated insights.
+Pulls campaign and deliverability data from your ESP and generates a performance report with period-over-period comparisons and AI-generated insights. Pick the skill that matches your ESP:
+
+| ESP | Skill | Status |
+|-----|-------|--------|
+| Customer.io | `/cio-analytics` | Stable |
+| Braze | `/braze-analytics` | Stable |
+| Iterable | `/iterable-analytics` | Beta |
 
 **Use this when:**
 - You want a quick health check on email performance
@@ -45,92 +76,23 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 - You're investigating a deliverability or engagement drop
 - You want to know which campaigns are performing best or worst
 
-**What you get:** A report covering deliverability rates, human engagement (bot-filtered), top 10 campaigns by volume, trend indicators, and specific recommended actions.
+**What you get:** A report covering deliverability rates, engagement metrics (opens, clicks), top campaigns by volume, trend indicators, and specific recommended actions.
 
 **Invoke it:**
 ```
 /cio-analytics            # Last 7 days vs previous 7 days
 /cio-analytics 30d        # Last 30 days vs previous 30 days
-/cio-analytics March 1 to March 15   # Custom date range
-```
-
-**Needs:** Customer.io MCP connected. See [skills/cio-analytics/SKILL.md](skills/cio-analytics/SKILL.md) for setup.
-
----
-
-### braze-analytics
-
-**What it does**: Pulls campaign and Canvas data from Braze and generates a performance report with period-over-period comparisons and AI-generated insights.
-
-**Use this when:**
-- You want a health check on Braze email performance
-- You want to see how Canvases (multi-step journeys) are performing
-- You're preparing a campaign performance report for stakeholders
-
-**What you get:** A report covering deliverability, unique opens/clicks, Canvas analytics, top campaigns by volume, and actionable recommendations.
-
-**Invoke it:**
-```
 /braze-analytics          # Last 7 days vs previous 7 days
-/braze-analytics 30d      # Last 30 days
 /braze-analytics Welcome Campaign   # Focus on a specific campaign
+/iterable-analytics 30d   # Last 30 days
 ```
 
-**Needs:** Braze MCP connected with a read-only API key. See [skills/braze-analytics/SKILL.md](skills/braze-analytics/SKILL.md) for setup.
+**Needs:** The MCP connector for your ESP. See each skill's setup guide:
+- [Customer.io setup](skills/cio-analytics/SKILL.md)
+- [Braze setup](skills/braze-analytics/SKILL.md)
+- [Iterable setup](skills/iterable-analytics/SKILL.md)
 
----
-
-### iterable-analytics
-
-**What it does**: Pulls campaign data from Iterable and generates a performance report with period-over-period comparisons and AI-generated insights.
-
-> **Beta**: Built against Iterable's MCP Server, which is currently in beta. Looking for testers — reach out to priy@sortment.com if you'd like to help.
-
-**Use this when:**
-- You want a health check on Iterable campaign performance
-- You want to compare this week's metrics to last week
-
-**What you get:** A report covering deliverability, open/click/conversion rates, top campaigns, and AI-generated insights.
-
-**Invoke it:**
-```
-/iterable-analytics        # Last 7 days vs previous 7 days
-/iterable-analytics 30d    # Last 30 days
-```
-
-**Needs:** Iterable MCP Server configured. See [skills/iterable-analytics/SKILL.md](skills/iterable-analytics/SKILL.md) for setup.
-
----
-
-## Installation
-
-### Claude CoWork
-
-> Requires a paid plan (Pro, Max, Team, or Enterprise).
-
-1. Open the **CoWork** tab in Claude Desktop (or go to claude.ai/code)
-2. Click **Customize** in the left sidebar
-3. Search for `lifecycle-marketing-skills` and click **Install**
-4. Set up any MCP connections the skills need (Jira, Customer.io, Braze, etc.):
-   - Go to **Settings → Connectors**
-   - Select the connector you need (e.g. Atlassian for Jira) and authenticate via OAuth
-   - For custom MCP servers, click **Add custom connector** and enter your server's HTTPS URL
-5. Skills are immediately available — type the slash command (e.g. `/cio-analytics`) in any conversation
-
-### From GitHub Marketplace
-
-```bash
-claude plugin marketplace add ppriyranjan/lifecycleskills
-claude plugin install lifecycle-marketing-skills@ppriyranjan-lifecycleskills
-```
-
-### Local Development
-
-```bash
-git clone https://github.com/ppriyranjan/lifecycleskills.git
-cd lifecycleskills
-claude --plugin-dir .
-```
+> **Iterable note:** Built against Iterable's MCP Server, which is currently in beta. Looking for testers — reach out to priy@sortment.com if you'd like to help.
 
 ---
 
