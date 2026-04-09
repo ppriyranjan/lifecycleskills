@@ -1,6 +1,8 @@
 # Lifecycle Marketing Skills for Claude Code
 
-Claude Code skills for lifecycle marketing teams. Each skill connects to your marketing tools via MCP and automates a common analysis or planning task.
+Claude skills for lifecycle marketing teams. 
+
+Made by [Lifecycle Luminaries](https://www.lifecycleluminaries.com/) and [Sortment](https://sortment.com/)
 
 ## Skills at a Glance
 
