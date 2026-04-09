@@ -106,11 +106,16 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 
 ### Claude CoWork
 
-1. Go to **Settings → Plugins** in your CoWork workspace
-2. Click **Browse Marketplace** and search for `lifecycle-marketing-skills`
-3. Click **Install** on the plugin card by `ppriyranjan`
-4. Configure MCP connections under **Settings → Integrations** for whichever tools you use
-5. Skills are immediately available — type the skill command in any conversation
+> Requires a paid plan (Pro, Max, Team, or Enterprise).
+
+1. Open the **CoWork** tab in Claude Desktop (or go to claude.ai/code)
+2. Click **Customize** in the left sidebar
+3. Search for `lifecycle-marketing-skills` and click **Install**
+4. Set up any MCP connections the skills need (Jira, Customer.io, Braze, etc.):
+   - Go to **Settings → Connectors**
+   - Select the connector you need (e.g. Atlassian for Jira) and authenticate via OAuth
+   - For custom MCP servers, click **Add custom connector** and enter your server's HTTPS URL
+5. Skills are immediately available — type the slash command (e.g. `/cio-analytics`) in any conversation
 
 ### From GitHub Marketplace
 
