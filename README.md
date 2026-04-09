@@ -79,10 +79,7 @@ Pulls campaign and deliverability data from your ESP and generates a performance
 /iterable-analytics 30d   # Last 30 days
 ```
 
-**Needs:** The MCP connector for your ESP. See each skill's setup guide:
-- [Customer.io setup](skills/cio-analytics/SKILL.md)
-- [Braze setup](skills/braze-analytics/SKILL.md)
-- [Iterable setup](skills/iterable-analytics/SKILL.md)
+**Needs:** The MCP connector for your ESP.
 
 ---
 
