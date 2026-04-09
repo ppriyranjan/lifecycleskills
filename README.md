@@ -9,9 +9,9 @@ Made by [Lifecycle Luminaries](https://www.lifecycleluminaries.com/) and [Sortme
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | [`/jira-lifecycle-ideas`](#jira-lifecycle-ideas) | Turns recent Jira launches into lifecycle campaign ideas | Planning campaigns around new features |
-| [`/cio-analytics`](#esp-analytics) | Analyzes Customer.io email performance | You use Customer.io and want a performance report |
-| [`/braze-analytics`](#esp-analytics) | Analyzes Braze campaign and Canvas performance | You use Braze and want a performance report |
-| [`/iterable-analytics`](#esp-analytics) | Analyzes Iterable campaign performance | You use Iterable and want a performance report *(beta)* |
+| [`/cio-analytics`](#esp-analytics) | Analyzes Customer.io performance | You use Customer.io and want a performance report |
+| [`/braze-analytics`](#esp-analytics) | Analyzes Braze performance | You use Braze and want a performance report |
+| [`/iterable-analytics`](#esp-analytics) | Analyzes Iterable performance | You use Iterable and want a performance report |
 
 ---
 
