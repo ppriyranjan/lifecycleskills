@@ -26,6 +26,7 @@ Claude Code skills for lifecycle marketing teams. Each skill connects to your ma
 5. Connect the tools each skill needs:
    - Go to **Customize → Connectors**
    - Add the relevant connector (e.g. Atlassian for Jira, Customer.io, Braze) and authenticate
+   - For Iterable, you will need to connect to their MCP server. [Docs](https://support.iterable.com/hc/en-us/articles/42936790497812-Setting-up-Iterable-s-MCP-Server)
 6. Skills are now available — type the slash command (e.g. `/cio-analytics`) in any conversation
 
 ---
