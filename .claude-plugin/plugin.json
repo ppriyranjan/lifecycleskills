@@ -1,6 +1,6 @@
 {
   "name": "lifecycle-marketing-skills",
-  "description": "Claude Code skills for lifecycle marketing teams using Customer.io and Jira",
+  "description": "Claude Code skills for lifecycle marketing teams using Customer.io, Klaviyo, Braze, Iterable, and Jira",
   "version": "1.0.0",
   "author": {
     "name": "Lifecycle Marketing Team"
@@ -10,6 +10,9 @@
   "license": "MIT",
   "keywords": [
     "customer.io",
+    "klaviyo",
+    "braze",
+    "iterable",
     "jira",
     "lifecycle-marketing",
     "analytics",
